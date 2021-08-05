@@ -71,25 +71,36 @@ def home():
 
             classes = ['Atelectasis', 'Consolidation', 'Infiltration', 'Pneumothorax', 'Edema', 'Emphysema', 'Fibrosis','Effusion', 'Pneumonia', 'Pleural_Thickening', 'Cardiomegaly', 'Nodule', 'Hernia', 'Mass', 'No Finding']
             image = Image.open(location).convert('RGB')
-            normalize = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-            preprocess = transforms.Compose([
-                transforms.Resize(256),
-                transforms.TenCrop(224),
-                transforms.Lambda
-                (lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops])),
-                transforms.Lambda
-                (lambda crops: torch.stack([normalize(crop) for crop in crops]))
-            ])
+            # normalize = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+            # preprocess = transforms.Compose([
+            #     transforms.Resize(256),
+            #     transforms.TenCrop(224),
+            #     transforms.Lambda
+            #     (lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops])),
+            #     transforms.Lambda
+            #     (lambda crops: torch.stack([normalize(crop) for crop in crops]))
+            # ])
+            preprocess = transforms.Compose([transforms.Resize(256),
+                                   transforms.CenterCrop(224),
+                                   transforms.ToTensor(),
+                                   transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+                                   ])
             image = preprocess(image)
             image = image.unsqueeze(0)
-
-            print(image)
+            print(image.size())
+            # images = image.cuda()
+            print(image.size())
+            outputs = model(image)
+            index_tensor = torch.argmax(outputs)
+            index = index_tensor.item()
+            print(classes[index])
             # prediction=model.predict(test_img)
             # prediction=model(image)
-            output = model(image)
-            index_tensor = torch.argmax(output)
-            prediction = index_tensor.item()
-            print(classes[prediction])
+
+            # output = model(image)
+            # index_tensor = torch.argmax(output)
+            # prediction = index_tensor.item()
+            # print(classes[prediction])
     return render_template('index.html')
 
 
