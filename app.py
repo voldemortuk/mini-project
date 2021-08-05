@@ -7,11 +7,14 @@ from keras.models import load_model
 import matplotlib.pyplot as plt
 import cv2
 import numpy as np
+from torchvision import transforms
 import pickle
 from PIL import Image
 import torchvision
 import torch.nn as nn
 import torch
+from flask import Flask
+from flask_ngrok import run_with_ngrok
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -42,8 +45,9 @@ with open(basedir+'/chexnet.pkl','rb') as f:
 # model=pickle.load(open(basedir+'/LR_model.pkl','rb'))
 model=pickle.load(open(basedir+'/chexnet.pkl','rb'))
 app=Flask(__name__)
+run_with_ngrok(app)   
 
-UPLOAD_FOLDER="static\image"
+UPLOAD_FOLDER="static/image"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','jfif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
@@ -84,8 +88,9 @@ def home():
 
             print(image)
             # prediction=model.predict(test_img)
+            prediction=model.predict(image)
 
-            # print(prediction)
+            print(prediction)
     return render_template('index.html')
 
 
@@ -94,5 +99,5 @@ def home():
 
 print(UPLOAD_FOLDER)
 if __name__=="__main__":
-    app.run(port=8000,debug=True)
+    app.run()
 
