@@ -44,6 +44,7 @@ with open(basedir+'/chexnet.pkl','rb') as f:
 
 # model=pickle.load(open(basedir+'/LR_model.pkl','rb'))
 model=pickle.load(open(basedir+'/chexnet.pkl','rb'))
+covid_model=pickle.load(open(basedir+'/LR_model.pkl','rb'))
 app=Flask(__name__)
 run_with_ngrok(app)   
 
@@ -53,8 +54,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
 def hello_world():
     return render_template("index.html")
-@app.route('/predict',methods=["GET","POST"])
-def home():
+@app.route('/chexnet',methods=["GET","POST"])
+def chexnet():
     if request.method=="POST":
         image_file=request.files['file']
         print("image ",image_file)
@@ -104,7 +105,24 @@ def home():
     return render_template('index.html')
 
 
-#resnet_chest = pickle.load(open('models/LR_model.pkl','rb'))
+@app.route('/covid',methods=["GET","POST"])
+def covid():
+    if request.method=="POST":
+        image_file=request.files['file']
+        print("image ",image_file)
+        if image_file:
+            filename = secure_filename(image_file.filename)
+            image_file.save(os.path.join(basedir,app.config['UPLOAD_FOLDER'], filename))
+            location = os.path.join(basedir,app.config['UPLOAD_FOLDER'], filename)
+            print("covid ",location)
+            test_image = cv2.imread(location)
+            test_image = cv2.cvtColor(test_image, cv2.IMREAD_GRAYSCALE)
+            test_image = cv2.resize(test_image, (224, 224))
+            test_img = test_image.flatten().reshape(1, -1)
+
+            prediction=covid_model.predict(test_img)
+            print(prediction)
+    return render_template('index.html')
 
 
 print(UPLOAD_FOLDER)
