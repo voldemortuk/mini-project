@@ -71,16 +71,16 @@ def home():
 
 
             image = Image.open(location).convert('RGB')
-            # normalize = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-            # preprocess = transforms.Compose([
-            #     transforms.Resize(256),
-            #     transforms.TenCrop(224),
-            #     transforms.Lambda
-            #     (lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops])),
-            #     transforms.Lambda
-            #     (lambda crops: torch.stack([normalize(crop) for crop in crops]))
-            # ])
-            # image = preprocess(image)
+            normalize = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+            preprocess = transforms.Compose([
+                transforms.Resize(256),
+                transforms.TenCrop(224),
+                transforms.Lambda
+                (lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in crops])),
+                transforms.Lambda
+                (lambda crops: torch.stack([normalize(crop) for crop in crops]))
+            ])
+            image = preprocess(image)
 
 
 
