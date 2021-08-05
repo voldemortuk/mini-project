@@ -69,7 +69,7 @@ def home():
             # test_image = cv2.resize(test_image, (224, 224))
             # test_img = test_image.flatten().reshape(1, -1)
 
-
+            classes = ['Atelectasis', 'Consolidation', 'Infiltration', 'Pneumothorax', 'Edema', 'Emphysema', 'Fibrosis','Effusion', 'Pneumonia', 'Pleural_Thickening', 'Cardiomegaly', 'Nodule', 'Hernia', 'Mass', 'No Finding']
             image = Image.open(location).convert('RGB')
             normalize = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
             preprocess = transforms.Compose([
@@ -81,16 +81,15 @@ def home():
                 (lambda crops: torch.stack([normalize(crop) for crop in crops]))
             ])
             image = preprocess(image)
-
-
-
-
+            image = image.unsqueeze(0)
 
             print(image)
             # prediction=model.predict(test_img)
             # prediction=model(image)
-            prediction = model(image)
-            print(prediction)
+            output = model(image)
+            index_tensor = torch.argmax(output)
+            prediction = index_tensor.item()
+            print(classes[prediction])
     return render_template('index.html')
 
 
