@@ -88,8 +88,8 @@ def home():
 
             print(image)
             # prediction=model.predict(test_img)
-            prediction=model.predict(image)
-
+            # prediction=model(image)
+            prediction = model(image)
             print(prediction)
     return render_template('index.html')
 
