@@ -122,7 +122,7 @@ def covid():
 
             prediction=covid_model.predict(test_img)
             print(prediction)
-    return render_template('index.html')
+    return render_template('covid.html',prediction=prediction,xray_image=location)
 
 
 print(UPLOAD_FOLDER)

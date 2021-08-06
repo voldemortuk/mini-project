@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html style="width: 1256.33px">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Covid Test result</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=ABeeZee"
+    />
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col">
+        <h1
+          class="mb-1"
+          style="
+            color: var(--cyan);
+            border-color: var(--primary);
+            font-size: 28px;
+            padding: 10px 20px;
+          "
+        >
+          § X-ray Abnormality Detection
+        </h1>
+      </div>
+    </div>
+    <div class="container" style="margin: 35px 25px">
+      <div class="row" style="background: #e4e4e4; margin: 0px 0px">
+        <div class="col-md-6 col-xl-8" style="text-align: left; height: 100%">
+          <h1
+            class="mb-1"
+            style="
+              color: var(--dark);
+              border-color: var(--primary);
+              font-size: 28px;
+              padding: 10px 20px;
+            "
+          >
+            Your X-ray image :
+          </h1>
+          <img src="{{location}}" />
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <h1
+            class="mb-1"
+            style="
+              color: var(--cyan);
+              border-color: var(--primary);
+              font-size: 28px;
+              padding: 10px 20px;
+            "
+          >
+            Predicted Result
+          </h1>
+          <p>{{prediction}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1
+          class="mb-1"
+          style="
+            color: var(--dark);
+            border-color: var(--primary);
+            font-size: 28px;
+            padding: 10px 45px;
+          "
+        >
+          <strong>What to do next?</strong><br />
+        </h1>
+      </div>
+    </div>
+    <div class="container" style="margin: 0px 35px">
+      <div class="row">
+        <div class="col-md-6 col-xl-7">
+          <span
+            >This theme features a flexible, UX friendly sidebar menu and stock
+            photos from our friends at&nbsp;</span
+          >
+        </div>
+        <div class="col-md-6 col-xl-5"></div>
+      </div>
+    </div>
+    <img />
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+  </body>
+</html>
