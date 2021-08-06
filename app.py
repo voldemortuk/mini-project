@@ -54,8 +54,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
 def hello_world():
     return render_template("index.html")
-@app.route('/chexnet',methods=["GET","POST"])
-def chexnet():
+@app.route('/overall',methods=["GET","POST"])
+def overall():
     if request.method=="POST":
         image_file=request.files['file']
         print("image ",image_file)
