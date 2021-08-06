@@ -51,7 +51,7 @@
           >
             Your X-ray image :
           </h1>
-          <img src="{{ url_for('static', filename='image/') }}{{xray_image}}" />
+          <img width="500" height="500" src="{{ url_for('static', filename='image/') }}{{xray_image}}" />
         </div>
         <div class="col-md-6 col-xl-4">
           <h1
@@ -65,7 +65,7 @@
           >
             Predicted Result
           </h1>
-          <p>You have {{prediction}}</p>
+          <p class="ml-5">You have {{prediction}}</p>
         </div>
       </div>
     </div>
@@ -87,9 +87,9 @@
     <div class="container" style="margin: 0px 35px">
       <div class="row">
         <div class="col-md-6 col-xl-7">
-          <span
-            ></span
-          >
+          <span>
+            <h2>{{prediction}}</h2>
+            </span>
         </div>
         <div class="col-md-6 col-xl-5">
         </div>
