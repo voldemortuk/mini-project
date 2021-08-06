@@ -48,7 +48,7 @@ covid_model=pickle.load(open(basedir+'/LR_model.pkl','rb'))
 app=Flask(__name__)
 run_with_ngrok(app)   
 
-UPLOAD_FOLDER="static1/image"
+UPLOAD_FOLDER="static/image"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','jfif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
@@ -102,7 +102,7 @@ def chexnet():
             # index_tensor = torch.argmax(output)
             # prediction = index_tensor.item()
             # print(classes[prediction])
-    return render_template('index.html')
+    return render_template('overall.html',prediction=classes[index],xray_image=image_file.filename)
 
 
 @app.route('/covid',methods=["GET","POST"])
@@ -122,7 +122,7 @@ def covid():
 
             prediction=covid_model.predict(test_img)
             print(prediction)
-    return render_template('covid.html',prediction=prediction,xray_image=location)
+    return render_template('covid.html',prediction=prediction,xray_image=image_file.filename)
 
 
 print(UPLOAD_FOLDER)

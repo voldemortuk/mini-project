@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Covid Test result</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
@@ -16,6 +16,9 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=ABeeZee"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/simple-line-icons.min.css') }}" />
+   
   </head>
 
   <body>
@@ -48,7 +51,7 @@
           >
             Your X-ray image :
           </h1>
-          <img src="{{location}}" />
+          <img src="{{ url_for('static', filename='image/') }}/{{xray_image}}" />
         </div>
         <div class="col-md-6 col-xl-4">
           <h1
@@ -62,7 +65,7 @@
           >
             Predicted Result
           </h1>
-          <p>{{prediction}}</p>
+          <p>You have {{prediction}}</p>
         </div>
       </div>
     </div>
@@ -85,17 +88,17 @@
       <div class="row">
         <div class="col-md-6 col-xl-7">
           <span
-            >This theme features a flexible, UX friendly sidebar menu and stock
-            photos from our friends at&nbsp;</span
+            ></span
           >
         </div>
-        <div class="col-md-6 col-xl-5"></div>
+        <div class="col-md-6 col-xl-5">
+        </div>
       </div>
     </div>
     <img />
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/stylish-portfolio.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/stylish-portfolio.js') }}"></script>
   </body>
 </html>
