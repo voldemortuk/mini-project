@@ -48,7 +48,7 @@ covid_model=pickle.load(open(basedir+'/LR_model.pkl','rb'))
 app=Flask(__name__)
 run_with_ngrok(app)   
 
-UPLOAD_FOLDER="static/image"
+UPLOAD_FOLDER="static1/image"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','jfif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
