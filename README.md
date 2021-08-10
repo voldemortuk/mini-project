@@ -3,7 +3,7 @@
 The Machine learning model was developed in Python programming lan- guage using Pytorch and implemented in JavaScript. 
 The UI was created using HTML and Tailwind CSS. ChexNet is a deep learning algorithm that can detect and localize 14 kinds of diseases from chest X-ray images. 
 Here we have implemented the [CheXNet](https://stanfordmlgroup.github.io/projects/chexnet/) using Python3 (Pytorch) and used Flask to integrate with our web-app.
-Our Web-app also detects COVID-19 using X-ray images for which we used the [COVID-19 chest xray](https://www.kaggle.com/bachrr/covid-chest-xray)
+Our Web-app also detects COVID-19 using X-ray images for which we used the [COVID-19 chest xray](https://www.kaggle.com/bachrr/covid-chest-xray) dataset on different ML models.
 
 
 
