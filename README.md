@@ -13,6 +13,12 @@ The [ChestX-ray14 dataset](http://openaccess.thecvf.com/content_cvpr_2017/papers
 - [PyTorch](http://pytorch.org/) and its dependencies
 - Flask 2.0.1
 
+## Usage
+
+1. Download images of ChestX-ray14 from this [released page](https://nihcc.app.box.com/v/ChestXray-NIHCC) and decompress them to the directory [images](./ChestX-ray14/images).
+
+2. Download this [colab notebook](https://github.com/ravijyoti3/mini-project/blob/main/web_mini_project.ipynb) and run locally 
+
 ##Web-App
 
 ### Home Page 
