@@ -21,7 +21,7 @@ The [ChestX-ray14 dataset](https://www.kaggle.com/nih-chest-xrays/datae) compris
 
 2. Download this [colab notebook](https://github.com/ravijyoti3/mini-project/blob/main/web_mini_project.ipynb) and run locally 
 
-##Web-App
+## Web-App
 
 ### Home Page 
 ![ModelOutput](https://github.com/ravijyoti3/mini-project/blob/main/Images/homepage.jpeg)
